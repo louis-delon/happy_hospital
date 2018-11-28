@@ -14,7 +14,7 @@ RSpec.describe Worker, type: :model do
     context 'Worker model persistance' do
       it 'should persist a worker' do
         create(:worker)
-        expect(worker.count).to eq(1)
+        expect(Worker.count).to eq(1)
       end
     end
 
