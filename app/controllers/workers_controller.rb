@@ -5,6 +5,11 @@ class WorkersController < ApplicationController
 
   def create
     @worker = Worker.create(worker_params)
+    if @worker.save!
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -20,5 +25,4 @@ class WorkersController < ApplicationController
   def worker_params
     params.require(:worker).permit(:first_name, :status, :price)
   end
-
 end

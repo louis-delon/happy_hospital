@@ -2,7 +2,7 @@
   <%= f.input :start_date, as: :date,
       :placeholder => 'Select date',
       label: "Shift date: " %>
-  <%= f.input :worker, as: :select2, collection: @workers %>
+  <%= f.association :worker, as: :select2, collection: @workers, :label_method => :first_name, :value_method => :id %>
   <%= f.button :submit %>
 <% end %>
 
