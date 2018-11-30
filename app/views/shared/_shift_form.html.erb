@@ -1,6 +1,6 @@
-<%= simple_form_for @shift do |f| %>
-  <%= f.input :start_date, as: :date,
-      :placeholder => 'Select date',
+<%= simple_form_for @shift, remote:true do |f| %>
+  <%= f.input :start_date, as: :date, html5: true, order: [:day, :month, :year],
+      :placeholder => 'Sélectionnez la date',
       label: "Shift date: " %>
   <%= f.association :worker, as: :select2, collection: @workers, :label_method => :first_name, :value_method => :id %>
   <%= f.button :submit %>
