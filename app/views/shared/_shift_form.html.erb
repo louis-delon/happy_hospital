@@ -1,5 +1,9 @@
 <%= simple_form_for @shift do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :worker %>
+  <%= f.input :start_date, as: :date,
+      :placeholder => 'Select date',
+      label: "Shift date: " %>
+  <%= f.input :worker, as: :select2, collection: @workers %>
   <%= f.button :submit %>
 <% end %>
+
+
