@@ -35,6 +35,8 @@ gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'popper_js', '~> 1.14.5'
 gem 'jquery-rails'
+gem 'select2-rails'
+gem 'select2_simple_form', github: 'lndl/select2_simple_form', tag: '0.7.3'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
