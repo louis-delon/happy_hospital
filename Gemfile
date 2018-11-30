@@ -32,7 +32,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'simple_form'
-gem 'bootstrap'
+gem 'bootstrap-sass'
+gem 'popper_js', '~> 1.14.5'
 gem 'jquery-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
