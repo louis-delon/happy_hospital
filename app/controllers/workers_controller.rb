@@ -1,6 +1,6 @@
 class WorkersController < ApplicationController
 
-  before_action :set_worker, only: [:edit, :update]
+  before_action :find_worker, only: [:edit, :update]
 
   STATUS = ['Interne', 'Titulaire', 'Interimaire']
   PRICES = [125, 170, 240]
@@ -29,7 +29,8 @@ class WorkersController < ApplicationController
 
   def update
     @worker.update(params_worker)
-    redirect_to workers_path
+    flash[:notice] = 'Successfully checked in'
+    redirect_to workers_path, notice: "Mise à jour effectuée"
   end
 
   private
@@ -38,7 +39,7 @@ class WorkersController < ApplicationController
     params.require(:worker).permit(:first_name, :status, :price)
   end
 
-  def set_worker
+  def find_worker
     @worker = Worker.find(params[:id])
   end
 end
