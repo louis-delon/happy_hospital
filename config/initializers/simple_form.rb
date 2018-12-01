@@ -66,6 +66,7 @@ SimpleForm.setup do |config|
 
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :default
+
   # Define the way to render check boxes / radio buttons with labels.
   # Defaults to :nested for bootstrap config.
   #   inline: input + label
@@ -85,9 +86,6 @@ SimpleForm.setup do |config|
 
   # CSS class to add for error notification helper.
   config.error_notification_class = 'error_notification'
-
-  # ID to add for error notification helper.
-  # config.error_notification_id = nil
 
   # Series of attempts to detect a default label method for collection.
   # config.collection_label_methods = [ :to_label, :name, :title, :to_s ]

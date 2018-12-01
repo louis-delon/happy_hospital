@@ -6,7 +6,7 @@ class WorkersController < ApplicationController
   def create
     @worker = Worker.create(worker_params)
     if @worker.save!
-      redirect_to root_path
+      redirect_to root_path, notice: "Médecin Ajouté!!"
     else
       render :new
     end

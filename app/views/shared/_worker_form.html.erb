@@ -1,6 +1,29 @@
-<%= simple_form_for @worker, remote:true do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :status %>
-  <%= f.input :price %>
-  <%= f.button :submit %>
-<% end %>
+
+<%= button_tag(type: 'button', class: "btn btn-primary", data: {toggle:"modal", target: "#exampleModalCenter" } ) do %>
+      <% content_tag(:strong, 'Ajouter un medecin') %>
+    <% end %>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalCenterTitle">Créer un médecin</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @worker, wrapper: :horizontal_form do |f| %>
+          <%= f.input :first_name %>
+          <%= f.input :status, as: :select2, collection: @status_collection %>
+          <%= f.input :price, as: :select2, collection: @prices %>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            <%= f.button :submit, "Créer le medecin", class:'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
