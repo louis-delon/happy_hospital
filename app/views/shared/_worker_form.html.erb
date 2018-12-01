@@ -1,7 +1,7 @@
 
 <%= button_tag(type: 'button', class: "btn btn-primary", data: {toggle:"modal", target: "#exampleModalCenter" } ) do %>
-      <% content_tag(:strong, 'Ajouter un medecin') %>
-    <% end %>
+  <% content_tag(:strong, 'Ajouter un medecin') %>
+<% end %>
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -15,9 +15,8 @@
       <div class="modal-body">
         <%= simple_form_for @worker, wrapper: :horizontal_form do |f| %>
           <%= f.input :first_name %>
-          <%= f.input :status, as: :select2, collection: @status_collection %>
-          <%= f.input :price, as: :select2, collection: @prices %>
-
+          <%= f.input :status, as: :select2, collection: @status_collection, include_blank: false %>
+          <%= f.input :price, as: :select2, collection: @prices, include_blank: false %>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
             <%= f.button :submit, "Créer le medecin", class:'btn btn-primary' %>

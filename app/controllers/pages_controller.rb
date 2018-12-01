@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-  STATUS = ['Medecin', 'Interne', 'Interimaire']
+  STATUS = ['Interne', 'Titulaire', 'Interimaire']
   PRICES = [125, 170, 240]
 
   def home
