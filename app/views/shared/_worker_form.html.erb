@@ -13,7 +13,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for @worker, wrapper: :horizontal_form do |f| %>
+        <%= simple_form_for @worker, wrapper: :horizontal_form, remote: true do |f| %>
+        <%= f.error_notification %>
           <%= f.input :first_name %>
           <%= f.input :status, as: :select2, collection: @status_collection, include_blank: false %>
           <%= f.input :price, as: :select2, collection: @prices, include_blank: false %>

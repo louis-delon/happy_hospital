@@ -13,9 +13,10 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for @shift, remote:true do |f| %>
-          <%= f.input :start_date, as: :date, html5: true, order: [:day, :month, :year], :placeholder => 'Sélectionnez la date', label: "Shift date: " %>
-          <%= f.association :worker, as: :select2, collection: @workers, :label_method => :first_name, :value_method=> :id %>
+        <%= simple_form_for @shift, remote: true do |f| %>
+        <%= f.error_notification %>
+          <%= f.input :start_date, as: :date, html5: true, :placeholder => 'Sélectionnez la date', label: "Date: " %>
+          <%= f.association :worker, as: :select2, collection: @workers, :label_method => :first_name, :value_method=> :id, label: 'Médecin' %>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
             <%= f.button :submit, "Valider", class:'btn btn-primary' %>

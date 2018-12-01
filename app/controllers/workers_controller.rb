@@ -4,9 +4,9 @@ class WorkersController < ApplicationController
   end
 
   def create
-    @worker = Worker.create(worker_params)
+    @worker = Worker.new(params_worker)
     if @worker.save!
-      redirect_to root_path, notice: "Médecin Ajouté!!"
+      redirect_to root_path
     else
       render :new
     end
@@ -22,7 +22,7 @@ class WorkersController < ApplicationController
 
   private
 
-  def worker_params
+  def params_worker
     params.require(:worker).permit(:first_name, :status, :price)
   end
 end
