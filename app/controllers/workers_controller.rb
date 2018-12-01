@@ -1,5 +1,7 @@
 class WorkersController < ApplicationController
 
+  before_action :set_worker, only: [:edit, :update]
+
   STATUS = ['Interne', 'Titulaire', 'Interimaire']
   PRICES = [125, 170, 240]
 
@@ -21,13 +23,11 @@ class WorkersController < ApplicationController
   end
 
   def edit
-    @worker = Worker.find(params[:id])
     @status_collection = STATUS
     @prices = PRICES
   end
 
   def update
-    @worker = Worker.find(params[:id])
     @worker.update(params_worker)
     redirect_to workers_path
   end
@@ -36,6 +36,10 @@ class WorkersController < ApplicationController
 
   def params_worker
     params.require(:worker).permit(:first_name, :status, :price)
+  end
+
+  def set_worker
+    @worker = Worker.find(params[:id])
   end
 end
 
