@@ -1,0 +1,11 @@
+<div class='container'>
+  <ul>
+    <% @workers.each do |worker| %>
+      <div >
+        <li style = 'display: inline-block;'><%= worker.first_name %>
+        <%= link_to 'Mettre à jour', edit_worker_path(worker) %></li>
+      </div>
+    <% end %>
+  </ul>
+</div>
+
