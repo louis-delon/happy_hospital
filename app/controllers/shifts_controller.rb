@@ -11,11 +11,11 @@ class ShiftsController < ApplicationController
   end
 
   def edit
-
+    @shift = Shift.find(params[:id])
   end
 
   def update
-
+    @shift = Shift.find(params[:id])
   end
 
 private

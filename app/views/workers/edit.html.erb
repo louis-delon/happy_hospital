@@ -1,2 +1,9 @@
-<h1>Workers#edit</h1>
-<p>Find me in app/views/workers/edit.html.erb</p>
+<div class="container">
+  <%= simple_form_for @worker, wrapper: :horizontal_form, remote: true do |f| %>
+    <%= f.error_notification %>
+    <%= f.input :first_name %>
+    <%= f.input :status, as: :select2, collection: @status_collection, include_blank: false %>
+    <%= f.input :price, as: :select2, collection: @prices, include_blank: false %>
+    <%= f.button :submit, "Valider", class:'btn btn-primary' %>
+  <% end %>
+</div>

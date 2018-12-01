@@ -1,4 +1,8 @@
 class WorkersController < ApplicationController
+
+  STATUS = ['Interne', 'Titulaire', 'Interimaire']
+  PRICES = [125, 170, 240]
+
   def index
     @workers = Worker.all
   end
@@ -12,16 +16,20 @@ class WorkersController < ApplicationController
     if @worker.save!
       redirect_to root_path
     else
-      render :new
+
     end
   end
 
   def edit
     @worker = Worker.find(params[:id])
+    @status_collection = STATUS
+    @prices = PRICES
   end
 
   def update
-    @worker.update(worker_params)
+    @worker = Worker.find(params[:id])
+    @worker.update(params_worker)
+    redirect_to workers_path
   end
 
   private
@@ -30,3 +38,13 @@ class WorkersController < ApplicationController
     params.require(:worker).permit(:first_name, :status, :price)
   end
 end
+
+
+# def home
+#   @shifts = Shift.all
+#   @worker = Worker.new
+#   @shift = Shift.new
+#   @workers = Worker.all
+
+#   @start_dates = Shift.all.map do |shift|
+#     shift.start_date
