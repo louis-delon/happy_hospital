@@ -2,11 +2,8 @@ class WorkersController < ApplicationController
 
   before_action :find_worker, only: [:edit, :update]
 
-  STATUS = ['Interne', 'Titulaire', 'Interimaire']
-  PRICES = [125, 170, 240]
-
   def index
-    @workers = Worker.all
+    @workers = Worker.all.sort_by { |worker| worker.status }
   end
 
   def new
@@ -18,19 +15,21 @@ class WorkersController < ApplicationController
     if @worker.save!
       redirect_to root_path
     else
-
+      redirect_to root_path
+      # TO DO: display an error message
     end
   end
 
   def edit
-    @status_collection = STATUS
-    @prices = PRICES
+    @setting = SettingService.new
+    @status_collection = @setting.status_list
+    @prices = @setting.prices_list
   end
 
   def update
     @worker.update(params_worker)
-    flash[:notice] = 'Successfully checked in'
-    redirect_to workers_path, notice: "Mise à jour effectuée"
+    redirect_to workers_path
+    # TO DO: display success message 'Medecin mis à jour'
   end
 
   private
