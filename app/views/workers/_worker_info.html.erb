@@ -1,0 +1,7 @@
+<tr id="worker<%= worker.id %>">
+  <th scope="row"></th>
+  <td class="name"><%= worker.first_name %></td>
+  <td class="status"><%= worker.status %></td>
+  <td class="price"><%= worker.price %></td>
+  <td><%= render 'worker_modal', worker: worker %></td>
+</tr>

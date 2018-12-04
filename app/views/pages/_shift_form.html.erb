@@ -1,8 +1,8 @@
-
 <%= button_tag(type: 'button', class: "btn btn-primary", data: {toggle:"modal", target: "#exampleModalCenter2" } ) do %>
-  <% content_tag(:strong, 'Ajouter une garde') %>
+  <% content_tag(:div, 'Ajouter une garde') %>
 <% end %>
 
+<!-- Modal from bootstrap for worker updating -->
 <div class="modal fade" id="exampleModalCenter2" tabindex="0" role="dialog" aria-labelledby="exampleModalCenter2Title" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -14,8 +14,8 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for @shift, remote: true do |f| %>
-        <%= f.error_notification %>
-          <%= f.input :start_date, as: :date, html5: true, :placeholder => 'Sélectionnez la date', label: "Date: " %>
+          <%= f.error_notification %>
+          <%= f.input :start_date, as: :date, html5: true, :placeholder => 'Sélectionnez la date', label: "Date:" %>
           <%= f.association :worker, as: :select2, collection: @workers, :label_method => :first_name, :value_method=> :id, label: 'Médecin' %>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>

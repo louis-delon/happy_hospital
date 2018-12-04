@@ -1,9 +1,10 @@
 class WorkersController < ApplicationController
 
   before_action :find_worker, only: [:edit, :update]
+  before_action :set_data, only: [:index, :edit]
 
   def index
-    @workers = Worker.all.sort_by { |worker| worker.status }
+    @workers = Worker.all.sort_by(&:status)
   end
 
   def new
@@ -14,21 +15,20 @@ class WorkersController < ApplicationController
     @worker = Worker.new(params_worker)
     if @worker.save!
       redirect_to root_path
-    else
-      redirect_to root_path
-      # TO DO: display an error message
     end
+      # TO DO: Manage displaying an error message if an error occur
   end
 
   def edit
-    @setting = SettingService.new
-    @status_collection = @setting.status_list
-    @prices = @setting.prices_list
+
   end
 
   def update
     @worker.update(params_worker)
-    redirect_to workers_path
+    respond_to do |format|
+            format.html { redirect_to workers_path }
+            format.js
+    end
     # TO DO: display success message 'Medecin mis à jour'
   end
 
@@ -41,14 +41,10 @@ class WorkersController < ApplicationController
   def find_worker
     @worker = Worker.find(params[:id])
   end
+
+  def set_data
+    @setting = SettingService.new
+    @status_collection = @setting.status_list
+    @prices = @setting.prices_list
+  end
 end
-
-
-# def home
-#   @shifts = Shift.all
-#   @worker = Worker.new
-#   @shift = Shift.new
-#   @workers = Worker.all
-
-#   @start_dates = Shift.all.map do |shift|
-#     shift.start_date

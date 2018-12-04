@@ -1,0 +1,14 @@
+var tr = document.getElementById('worker' + '<%=@worker.id%>')
+
+tr.querySelector('.name').innerText = "<%= @worker.first_name %>";
+tr.querySelector('.status').innerText = "<%= @worker.status %>";
+tr.querySelector('.price').innerText = "<%= @worker.price %>";
+
+var workerId = '<%=@worker.id%>'
+var id = '#exampleModalCenter' + workerId;
+
+// hide the modal
+$(id).modal('hide');
+
+tr = null;
+workerId = null;

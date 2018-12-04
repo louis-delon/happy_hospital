@@ -1,26 +1,20 @@
 <div class='container'>
-  <h1>Listing des medecins</h1>
+  <h1 class='title'>Liste des medecins</h1>
   <table class="table table-hover">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Prénom</th>
-          <th scope="col">Statut</th>
-          <th scope="col">Cout(€)</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-    <% @workers.each_with_index do |worker, index| %>
-      <tbody>
-        <tr>
-          <th scope="row"><%= index + 1 %></th>
-          <td> <%= worker.first_name %></td>
-          <td> <%= worker.status %></td>
-          <td> <%= worker.price %></td>
-          <td> <%= link_to 'Mettre à jour', edit_worker_path(worker) %></td>
-        </tr>
-      </tbody>
-    <% end %>
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Statut</th>
+        <th scope="col">Cout(€)</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @workers.each do |worker| %>
+        <%= render 'worker_info', worker: worker %>
+      <% end %>
+    </tbody>
   </table>
-  <%= link_to 'revenir à l\'accueil', root_path %>
+  <%= link_to 'retour à l\'accueil', root_path, class: 'btn btn-primary button' %>
 </div>
