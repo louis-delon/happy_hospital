@@ -4,11 +4,15 @@ tr.querySelector('.name').innerText = "<%= @worker.first_name %>";
 tr.querySelector('.status').innerText = "<%= @worker.status %>";
 tr.querySelector('.price').innerText = "<%= @worker.price %>";
 
-var workerId = '<%=@worker.id%>'
+var workerId = '<%=@worker.id%>';
 var id = '#exampleModalCenter' + workerId;
+
+var success = document.querySelector('.alert').innerHTML = "<h4 class='alert-success update-notice'><%= flash[:success] %></h4>";
 
 // hide the modal
 $(id).modal('hide');
-
 tr = null;
 workerId = null;
+success;
+
+

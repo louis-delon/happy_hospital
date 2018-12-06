@@ -29,6 +29,7 @@ class WorkersController < ApplicationController
             format.html { redirect_to workers_path }
             format.js
     end
+    flash[:success] = "Le livre a été mis à jour."
     # TO DO: display success message 'Medecin mis à jour'
   end
 
