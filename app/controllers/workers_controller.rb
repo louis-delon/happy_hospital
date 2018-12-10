@@ -15,6 +15,9 @@ class WorkersController < ApplicationController
     @worker = Worker.new(params_worker)
     if @worker.save!
       redirect_to root_path
+    else
+      redirect_to root_path
+      flash[:success] = "echec de la création du message"
     end
       # TO DO: Manage displaying an error message if an error occur
   end
@@ -29,7 +32,7 @@ class WorkersController < ApplicationController
             format.html { redirect_to workers_path }
             format.js
     end
-    flash[:success] = "Le livre a été mis à jour."
+    flash[:success] = "Le médecin a été mis à jour."
     # TO DO: display success message 'Medecin mis à jour'
   end
 
@@ -45,7 +48,6 @@ class WorkersController < ApplicationController
 
   def set_data
     @setting = SettingService.new
-    @status_collection = @setting.status_list
-    @prices = @setting.prices_list
   end
+
 end

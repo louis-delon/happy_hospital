@@ -7,7 +7,8 @@ class PagesController < ApplicationController
   end
 
   def start_dates
-    @start_dates = Shift.all.map(&:start_date)
+    # @start_dates = Shift.all.map(&:start_date)
+    @start_dates = Shift.pluck(:start_date)
   end
 
   def shifts_list
@@ -18,9 +19,9 @@ class PagesController < ApplicationController
     @workers = Worker.all.sort_by(&:created_at)
   end
 
+  private
+
   def set_data
     @setting = SettingService.new
-    @status_collection = @setting.status_list
-    @prices = @setting.prices_list
   end
 end

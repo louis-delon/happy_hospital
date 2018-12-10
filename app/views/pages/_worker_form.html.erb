@@ -16,8 +16,8 @@
         <%= simple_form_for @worker, wrapper: :horizontal_form, remote: true do |f| %>
         <%= f.error_notification %>
           <%= f.input :first_name %>
-          <%= f.input :status, as: :select2, collection: @status_collection, include_blank: false %>
-          <%= f.input :price, as: :select2, collection: @prices, include_blank: false %>
+          <%= f.input :status, as: :select2, collection: @setting.status_list, include_blank: false %>
+          <%= f.input :price, as: :select2, collection: @setting.prices_list, include_blank: false %>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
             <%= f.button :submit, "Créer le medecin", class:'btn btn-primary' %>
